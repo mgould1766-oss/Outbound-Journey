@@ -16,17 +16,13 @@
   --rose:#F9EEF1;
   --gold:#FFD166;
   --blue:#BED1E3;
-  --lilac:#D7C9E8;
   --white:#FFFFFF;
   --line:#E6EDF3;
   --shadow:0 14px 36px rgba(47,58,74,.10);
 }
 
 *{box-sizing:border-box}
-
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -61,15 +57,12 @@ body{
   margin-bottom:12px;
 }
 
-h1,h2,h3{
-  font-family:'Quicksand',sans-serif;
-}
+h1,h2,h3{font-family:'Quicksand',sans-serif}
 
 h1{
   font-size:52px;
   line-height:1.05;
   margin:0 0 14px;
-  color:var(--ink);
 }
 
 .hero p{
@@ -122,29 +115,40 @@ h1{
   overflow:hidden;
 }
 
-.day-nav{
-  position:sticky;
-  top:0;
-  z-index:50;
+.day-menu{
+  background:white;
+  border:1px solid rgba(190,209,227,.7);
+  border-radius:28px;
+  padding:24px;
+  box-shadow:var(--shadow);
+  margin-bottom:24px;
+  scroll-margin-top:24px;
+}
+
+.day-menu h2{
+  margin:0 0 8px;
+  font-size:28px;
+}
+
+.day-menu p{
+  margin:0 0 18px;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.day-links{
   display:flex;
   gap:10px;
   overflow-x:auto;
-  padding:12px;
-  margin:0 0 24px;
-  background:rgba(255,255,255,.88);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(190,209,227,.7);
-  border-radius:22px;
-  box-shadow:0 10px 26px rgba(47,58,74,.08);
+  flex-wrap:wrap;
 }
 
-.day-nav a{
-  flex:0 0 auto;
+.day-links a{
   text-decoration:none;
   color:var(--ink);
   background:#F4F8FB;
   border:1px solid #E0EAF2;
-  padding:9px 14px;
+  padding:10px 15px;
   border-radius:999px;
   font-size:13px;
   font-weight:700;
@@ -157,7 +161,7 @@ h1{
   margin-bottom:24px;
   box-shadow:var(--shadow);
   border:1px solid rgba(230,237,243,.9);
-  scroll-margin-top:90px;
+  scroll-margin-top:24px;
 }
 
 .day-head{
@@ -211,9 +215,7 @@ h1{
   color:#445163;
 }
 
-.story-box p:last-child{
-  margin-bottom:0;
-}
+.story-box p:last-child{margin-bottom:0}
 
 .know-box h3{
   margin:0 0 12px;
@@ -244,6 +246,27 @@ h1{
   color:#526071;
 }
 
+.card-nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid #E6EDF3;
+}
+
+.card-nav a{
+  text-decoration:none;
+  font-weight:700;
+  font-size:13px;
+  color:#2F3A4A;
+  background:#FFFFFF;
+  border:1px solid #E0EAF2;
+  border-radius:999px;
+  padding:9px 13px;
+}
+
 .footer{
   text-align:center;
   color:#6B7280;
@@ -271,7 +294,7 @@ h1{
   .hero{padding:38px 18px}
   h1{font-size:34px}
   .stats{grid-template-columns:1fr}
-  .day-card{padding:20px}
+  .day-card,.day-menu{padding:20px}
   .day-title h2{font-size:24px}
 }
 </style>
@@ -300,325 +323,89 @@ h1{
     <div id="map"></div>
   </section>
 
-  <nav class="day-nav">
-    <a href="#day1">Day 1</a>
-    <a href="#day2">Day 2</a>
-    <a href="#day3">Day 3</a>
-    <a href="#day4">Day 4</a>
-    <a href="#day5">Day 5</a>
-    <a href="#day6">Day 6</a>
-    <a href="#day7">Day 7</a>
-    <a href="#day8">Day 8</a>
-    <a href="#day9">Day 9</a>
-    <a href="#day10">Day 10</a>
-    <a href="#day11">Day 11</a>
-    <a href="#day12">Day 12</a>
-  </nav>
+  <section id="day-menu" class="day-menu">
+    <h2>Choose a Day</h2>
+    <p>Jump to any part of the westbound trip. Each day card also has a way back to this menu.</p>
+    <div class="day-links">
+      <a href="#day1">Day 1</a><a href="#day2">Day 2</a><a href="#day3">Day 3</a><a href="#day4">Day 4</a>
+      <a href="#day5">Day 5</a><a href="#day6">Day 6</a><a href="#day7">Day 7</a><a href="#day8">Day 8</a>
+      <a href="#day9">Day 9</a><a href="#day10">Day 10</a><a href="#day11">Day 11</a><a href="#day12">Day 12</a>
+    </div>
+  </section>
 
   <section id="day1" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 1 — Goldsboro → Lewisburg</h2>
-        <div class="route-note">The adventure officially begins.</div>
-      </div>
-      <div class="badge">Adventure Begins</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>The first day is all about easing into the road. The car is packed, the kids know something big is happening, and the trip finally moves from planning into memory-making.</p>
-        <p>This is a gentle first stretch — enough distance to feel like the journey has begun, but not so much that the day becomes overwhelming.</p>
-        <div class="pills"><span class="pill">First drive day</span><span class="pill">Settle in</span><span class="pill">Mountain evening</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Keep this day simple.</li>
-          <li>Let everyone adjust to road-trip rhythm.</li>
-          <li>Good night to start the book tradition.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 1 — Goldsboro → Lewisburg</h2><div class="route-note">The adventure officially begins.</div></div><div class="badge">Adventure Begins</div></div>
+    <div class="day-grid"><div class="story-box"><p>The first day is all about easing into the road. The car is packed, the kids know something big is happening, and the trip finally moves from planning into memory-making.</p><p>This is a gentle first stretch — enough distance to feel like the journey has begun, but not so much that the day becomes overwhelming.</p><div class="pills"><span class="pill">First drive day</span><span class="pill">Settle in</span><span class="pill">Mountain evening</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Keep this day simple.</li><li>Let everyone adjust to road-trip rhythm.</li><li>Good night to start the book tradition.</li></ul></div></div>
+    <div class="card-nav"><a href="#day-menu">↑ Back to Day Menu</a><a href="#day2">Next Day →</a></div>
   </section>
 
   <section id="day2" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 2 — Lewisburg → Tipp City</h2>
-        <div class="route-note">A quiet day of changing scenery.</div>
-      </div>
-      <div class="badge">Road Rhythm</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>The trip begins to find its pace. Hills, small towns, and long stretches of road help everyone settle into the routine of snacks, photos, songs, stops, and looking out the window.</p>
-        <p>This is one of those useful travel days that keeps the whole adventure manageable.</p>
-        <div class="pills"><span class="pill">Easy pacing</span><span class="pill">Comfort stop day</span><span class="pill">Midwest approach</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>A good day to keep expectations light.</li>
-          <li>Use breaks before anyone gets restless.</li>
-          <li>Let the kids notice how the landscape changes.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 2 — Lewisburg → Tipp City</h2><div class="route-note">A quiet day of changing scenery.</div></div><div class="badge">Road Rhythm</div></div>
+    <div class="day-grid"><div class="story-box"><p>The trip begins to find its pace. Hills, small towns, and long stretches of road help everyone settle into the routine of snacks, photos, songs, stops, and looking out the window.</p><p>This is one of those useful travel days that keeps the whole adventure manageable.</p><div class="pills"><span class="pill">Easy pacing</span><span class="pill">Comfort stop day</span><span class="pill">Midwest approach</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>A good day to keep expectations light.</li><li>Use breaks before anyone gets restless.</li><li>Let the kids notice how the landscape changes.</li></ul></div></div>
+    <div class="card-nav"><a href="#day1">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a><a href="#day3">Next Day →</a></div>
   </section>
 
   <section id="day3" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 3 — Tipp City → Oak Lawn / Chicago Area</h2>
-        <div class="route-note">Almost to the official beginning of Route 66.</div>
-      </div>
-      <div class="badge">Route 66 Eve</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>Chicago is where the Route 66 story truly begins. This arrival day is less about doing everything and more about getting close enough to begin the Mother Road with energy the next morning.</p>
-        <p>The excitement builds here — because tomorrow, it becomes official.</p>
-        <div class="pills"><span class="pill">Chicago area</span><span class="pill">Route kickoff</span><span class="pill">Early night</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Keep the arrival practical.</li>
-          <li>Oak Lawn keeps things easier than downtown.</li>
-          <li>Prep for the official start in the morning.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 3 — Tipp City → Oak Lawn / Chicago Area</h2><div class="route-note">Almost to the official beginning of Route 66.</div></div><div class="badge">Route 66 Eve</div></div>
+    <div class="day-grid"><div class="story-box"><p>Chicago is where the Route 66 story truly begins. This arrival day is less about doing everything and more about getting close enough to begin the Mother Road with energy the next morning.</p><p>The excitement builds here — because tomorrow, it becomes official.</p><div class="pills"><span class="pill">Chicago area</span><span class="pill">Route kickoff</span><span class="pill">Early night</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Keep the arrival practical.</li><li>Oak Lawn keeps things easier than downtown.</li><li>Prep for the official start in the morning.</li></ul></div></div>
+    <div class="card-nav"><a href="#day2">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a><a href="#day4">Next Day →</a></div>
   </section>
 
   <section id="day4" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 4 — Chicago → Springfield, Illinois</h2>
-        <div class="route-note">The first official Route 66 day.</div>
-      </div>
-      <div class="badge">Mother Road Begins</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>This is the day the trip shifts from “getting there” to “being there.” The Route 66 signs, diners, roadside giants, and old-road charm begin to appear.</p>
-        <p>Lou Mitchell’s, the Gemini Giant, and Cozy Dog Drive-In make this feel like the road trip everyone imagined.</p>
-        <div class="pills"><span class="pill">Lou Mitchell’s</span><span class="pill">Gemini Giant</span><span class="pill">Cozy Dog</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Start-of-Route photo opportunity.</li>
-          <li>Build in time for quirky stops.</li>
-          <li>This is a high-memory day.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 4 — Chicago → Springfield, Illinois</h2><div class="route-note">The first official Route 66 day.</div></div><div class="badge">Mother Road Begins</div></div>
+    <div class="day-grid"><div class="story-box"><p>This is the day the trip shifts from “getting there” to “being there.” The Route 66 signs, diners, roadside giants, and old-road charm begin to appear.</p><p>Lou Mitchell’s, the Gemini Giant, and Cozy Dog Drive-In make this feel like the road trip everyone imagined.</p><div class="pills"><span class="pill">Lou Mitchell’s</span><span class="pill">Gemini Giant</span><span class="pill">Cozy Dog</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Start-of-Route photo opportunity.</li><li>Build in time for quirky stops.</li><li>This is a high-memory day.</li></ul></div></div>
+    <div class="card-nav"><a href="#day3">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a><a href="#day5">Next Day →</a></div>
   </section>
 
   <section id="day5" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 5 — Springfield → Rolla</h2>
-        <div class="route-note">Bridges, custard, and classic roadside Americana.</div>
-      </div>
-      <div class="badge">Neon & Custard</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>This day brings more of the classic Route 66 texture — old bridges, favorite food stops, and places that feel like they belong in family photos.</p>
-        <p>The Chain of Rocks Bridge and Ted Drewes Frozen Custard give the day a mix of history and sweetness.</p>
-        <div class="pills"><span class="pill">Chain of Rocks Bridge</span><span class="pill">Ted Drewes</span><span class="pill">Missouri</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Good photo day.</li>
-          <li>Frozen custard stop is a fun anchor.</li>
-          <li>Keep walking comfort in mind.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 5 — Springfield → Rolla</h2><div class="route-note">Bridges, custard, and classic roadside Americana.</div></div><div class="badge">Neon & Custard</div></div>
+    <div class="day-grid"><div class="story-box"><p>This day brings more of the classic Route 66 texture — old bridges, favorite food stops, and places that feel like they belong in family photos.</p><p>The Chain of Rocks Bridge and Ted Drewes Frozen Custard give the day a mix of history and sweetness.</p><div class="pills"><span class="pill">Chain of Rocks Bridge</span><span class="pill">Ted Drewes</span><span class="pill">Missouri</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Good photo day.</li><li>Frozen custard stop is a fun anchor.</li><li>Keep walking comfort in mind.</li></ul></div></div>
+    <div class="card-nav"><a href="#day4">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a><a href="#day6">Next Day →</a></div>
   </section>
 
   <section id="day6" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 6 — Rolla → Tulsa</h2>
-        <div class="route-note">Quirky Route 66 personality comes alive.</div>
-      </div>
-      <div class="badge">Blue Whale Day</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>This is the kind of day kids remember because the stops are joyful, odd, and completely unexpected.</p>
-        <p>The Blue Whale of Catoosa is exactly the kind of place that turns a long drive into a story.</p>
-        <div class="pills"><span class="pill">Blue Whale</span><span class="pill">Oklahoma</span><span class="pill">Playful stop</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Great day for Kid’s Corner tie-ins.</li>
-          <li>Plan for photos and wiggle time.</li>
-          <li>Let the stop be silly.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 6 — Rolla → Tulsa</h2><div class="route-note">Quirky Route 66 personality comes alive.</div></div><div class="badge">Blue Whale Day</div></div>
+    <div class="day-grid"><div class="story-box"><p>This is the kind of day kids remember because the stops are joyful, odd, and completely unexpected.</p><p>The Blue Whale of Catoosa is exactly the kind of place that turns a long drive into a story.</p><div class="pills"><span class="pill">Blue Whale</span><span class="pill">Oklahoma</span><span class="pill">Playful stop</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Great day for Kid’s Corner tie-ins.</li><li>Plan for photos and wiggle time.</li><li>Let the stop be silly.</li></ul></div></div>
+    <div class="card-nav"><a href="#day5">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a><a href="#day7">Next Day →</a></div>
   </section>
 
   <section id="day7" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 7 — Tulsa → Amarillo</h2>
-        <div class="route-note">The road opens wide under bigger skies.</div>
-      </div>
-      <div class="badge">Big Sky Day</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>The landscape starts to stretch. This is where the trip begins to feel larger, wider, and more western.</p>
-        <p>Cadillac Ranch adds color, humor, and one of the most iconic photo stops of the outbound journey.</p>
-        <div class="pills"><span class="pill">Cadillac Ranch</span><span class="pill">Texas</span><span class="pill">Open road</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Expect wind and open landscape.</li>
-          <li>Cadillac Ranch may be muddy after rain.</li>
-          <li>Bring patience for photos.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 7 — Tulsa → Amarillo</h2><div class="route-note">The road opens wide under bigger skies.</div></div><div class="badge">Big Sky Day</div></div>
+    <div class="day-grid"><div class="story-box"><p>The landscape starts to stretch. This is where the trip begins to feel larger, wider, and more western.</p><p>Cadillac Ranch adds color, humor, and one of the most iconic photo stops of the outbound journey.</p><div class="pills"><span class="pill">Cadillac Ranch</span><span class="pill">Texas</span><span class="pill">Open road</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Expect wind and open landscape.</li><li>Cadillac Ranch may be muddy after rain.</li><li>Bring patience for photos.</li></ul></div></div>
+    <div class="card-nav"><a href="#day6">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a><a href="#day8">Next Day →</a></div>
   </section>
 
   <section id="day8" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 8 — Amarillo → Albuquerque</h2>
-        <div class="route-note">Midpoint magic and desert colors.</div>
-      </div>
-      <div class="badge">Halfway There</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>This is the day the trip crosses a symbolic line — the famous Route 66 midpoint.</p>
-        <p>The MidPoint Café gives the day a built-in celebration before the road carries everyone toward New Mexico skies.</p>
-        <div class="pills"><span class="pill">MidPoint Café</span><span class="pill">New Mexico</span><span class="pill">Desert begins</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Great “we made it halfway” moment.</li>
-          <li>Good day for a family photo.</li>
-          <li>Expect a visual shift in scenery.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 8 — Amarillo → Albuquerque</h2><div class="route-note">Midpoint magic and desert colors.</div></div><div class="badge">Halfway There</div></div>
+    <div class="day-grid"><div class="story-box"><p>This is the day the trip crosses a symbolic line — the famous Route 66 midpoint.</p><p>The MidPoint Café gives the day a built-in celebration before the road carries everyone toward New Mexico skies.</p><div class="pills"><span class="pill">MidPoint Café</span><span class="pill">New Mexico</span><span class="pill">Desert begins</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Great “we made it halfway” moment.</li><li>Good day for a family photo.</li><li>Expect a visual shift in scenery.</li></ul></div></div>
+    <div class="card-nav"><a href="#day7">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a><a href="#day9">Next Day →</a></div>
   </section>
 
   <section id="day9" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 9 — Albuquerque → Holbrook</h2>
-        <div class="route-note">Toward Arizona, Winslow, and a very special overnight.</div>
-      </div>
-      <div class="badge">Arizona Magic</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>The road continues through landscapes that feel bigger and older. Winslow brings a familiar Route 66 photo moment, and Holbrook brings one of the most memorable stays of the trip.</p>
-        <p>This is where the journey starts to feel almost storybook.</p>
-        <div class="pills"><span class="pill">Winslow</span><span class="pill">Standing on the Corner</span><span class="pill">Holbrook</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Winslow is a strong photo anchor.</li>
-          <li>Holbrook deserves slower attention.</li>
-          <li>This day connects well to The Route page.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 9 — Albuquerque → Holbrook</h2><div class="route-note">Toward Arizona, Winslow, and a very special overnight.</div></div><div class="badge">Arizona Magic</div></div>
+    <div class="day-grid"><div class="story-box"><p>The road continues through landscapes that feel bigger and older. Winslow brings a familiar Route 66 photo moment, and Holbrook brings one of the most memorable stays of the trip.</p><p>This is where the journey starts to feel almost storybook.</p><div class="pills"><span class="pill">Winslow</span><span class="pill">Standing on the Corner</span><span class="pill">Holbrook</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Winslow is a strong photo anchor.</li><li>Holbrook deserves slower attention.</li><li>This day connects well to The Route page.</li></ul></div></div>
+    <div class="card-nav"><a href="#day8">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a><a href="#day10">Next Day →</a></div>
   </section>
 
   <section id="day10" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 10 — Holbrook → Williams</h2>
-        <div class="route-note">Wigwams, northern Arizona, and Grand Canyon anticipation.</div>
-      </div>
-      <div class="badge">Wigwam Morning</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>Holbrook is not just an overnight — it is part of the story. The Wigwam Motel gives this day a special beginning before the road continues toward Williams.</p>
-        <p>Williams becomes the doorway to the Grand Canyon portion of the adventure.</p>
-        <div class="pills"><span class="pill">Wigwam Motel</span><span class="pill">Williams</span><span class="pill">Grand Canyon gateway</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Morning photos at the Wigwam Motel.</li>
-          <li>Keep this day flexible.</li>
-          <li>Williams is a good two-night pause.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 10 — Holbrook → Williams</h2><div class="route-note">Wigwams, northern Arizona, and Grand Canyon anticipation.</div></div><div class="badge">Wigwam Morning</div></div>
+    <div class="day-grid"><div class="story-box"><p>Holbrook is not just an overnight — it is part of the story. The Wigwam Motel gives this day a special beginning before the road continues toward Williams.</p><p>Williams becomes the doorway to the Grand Canyon portion of the adventure.</p><div class="pills"><span class="pill">Wigwam Motel</span><span class="pill">Williams</span><span class="pill">Grand Canyon gateway</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Morning photos at the Wigwam Motel.</li><li>Keep this day flexible.</li><li>Williams is a good two-night pause.</li></ul></div></div>
+    <div class="card-nav"><a href="#day9">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a><a href="#day11">Next Day →</a></div>
   </section>
 
   <section id="day11" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 11 — Williams → Needles</h2>
-        <div class="route-note">From mountain air into desert heat.</div>
-      </div>
-      <div class="badge">Desert Road</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>The road shifts again. This stretch carries the family through a more open, desert-feeling version of the trip.</p>
-        <p>Roy’s Motel sign gives the day a classic roadside image before the final westbound push.</p>
-        <div class="pills"><span class="pill">Roy’s Motel sign</span><span class="pill">Needles</span><span class="pill">Desert stretch</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Heat may be a factor.</li>
-          <li>Hydration and short stops matter.</li>
-          <li>This is a visual transition day.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 11 — Williams → Needles</h2><div class="route-note">From mountain air into desert heat.</div></div><div class="badge">Desert Road</div></div>
+    <div class="day-grid"><div class="story-box"><p>The road shifts again. This stretch carries the family through a more open, desert-feeling version of the trip.</p><p>Roy’s Motel sign gives the day a classic roadside image before the final westbound push.</p><div class="pills"><span class="pill">Roy’s Motel sign</span><span class="pill">Needles</span><span class="pill">Desert stretch</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Heat may be a factor.</li><li>Hydration and short stops matter.</li><li>This is a visual transition day.</li></ul></div></div>
+    <div class="card-nav"><a href="#day10">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a><a href="#day12">Next Day →</a></div>
   </section>
 
   <section id="day12" class="day-card">
-    <div class="day-head">
-      <div class="day-title">
-        <h2>Day 12 — Needles → Buena Park</h2>
-        <div class="route-note">The Pacific finish line and arrival in California.</div>
-      </div>
-      <div class="badge">California Arrival</div>
-    </div>
-    <div class="day-grid">
-      <div class="story-box">
-        <p>The outbound journey reaches its western ending. Santa Monica and the End of Route 66 sign make the trip feel complete before the family turns toward Buena Park.</p>
-        <p>After all the planning, all the miles, and all the little stops along the way, the adventure has officially crossed the country.</p>
-        <div class="pills"><span class="pill">Santa Monica Pier</span><span class="pill">End of Route 66</span><span class="pill">Buena Park</span></div>
-      </div>
-      <div class="know-box">
-        <h3>What to know</h3>
-        <ul>
-          <li>Santa Monica is the symbolic finish.</li>
-          <li>Allow extra time near Los Angeles.</li>
-          <li>This is the celebration day.</li>
-        </ul>
-      </div>
-    </div>
+    <div class="day-head"><div class="day-title"><h2>Day 12 — Needles → Buena Park</h2><div class="route-note">The Pacific finish line and arrival in California.</div></div><div class="badge">California Arrival</div></div>
+    <div class="day-grid"><div class="story-box"><p>The outbound journey reaches its western ending. Santa Monica and the End of Route 66 sign make the trip feel complete before the family turns toward Buena Park.</p><p>After all the planning, all the miles, and all the little stops along the way, the adventure has officially crossed the country.</p><div class="pills"><span class="pill">Santa Monica Pier</span><span class="pill">End of Route 66</span><span class="pill">Buena Park</span></div></div><div class="know-box"><h3>What to know</h3><ul><li>Santa Monica is the symbolic finish.</li><li>Allow extra time near Los Angeles.</li><li>This is the celebration day.</li></ul></div></div>
+    <div class="card-nav"><a href="#day11">← Previous Day</a><a href="#day-menu">↑ Back to Day Menu</a></div>
   </section>
 
-  <div class="footer">
-    © 2026 The Grand Adventure · Route 66 Centennial · Goldsboro to Chicago · Chicago to Santa Monica
-  </div>
-
+  <div class="footer">© 2026 The Grand Adventure · Route 66 Centennial · Goldsboro to Chicago · Chicago to Santa Monica</div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -640,10 +427,7 @@ const stops = [
   { name:"Buena Park, CA", label:"Day 12 · Final arrival", coords:[33.8675,-117.9981] }
 ];
 
-const map = L.map('map', {
-  scrollWheelZoom:false
-});
-
+const map = L.map('map', { scrollWheelZoom:false });
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom:18,
   attribution:'&copy; OpenStreetMap contributors'
@@ -651,19 +435,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const routeCoords = stops.map(stop => stop.coords);
 
-const routeLine = L.polyline(routeCoords, {
-  color:'#E7B7C8',
-  weight:5,
-  opacity:.95,
-  lineJoin:'round'
-}).addTo(map);
-
-const routeGlow = L.polyline(routeCoords, {
-  color:'#FFD166',
-  weight:10,
-  opacity:.25,
-  lineJoin:'round'
-}).addTo(map);
+const routeGlow = L.polyline(routeCoords, { color:'#FFD166', weight:10, opacity:.25, lineJoin:'round' }).addTo(map);
+const routeLine = L.polyline(routeCoords, { color:'#E7B7C8', weight:5, opacity:.95, lineJoin:'round' }).addTo(map);
 
 stops.forEach((stop, index) => {
   const marker = L.circleMarker(stop.coords, {
@@ -673,14 +446,10 @@ stops.forEach((stop, index) => {
     weight:2,
     fillOpacity:1
   }).addTo(map);
-
   marker.bindPopup(`<strong>${stop.name}</strong><br>${stop.label}`);
 });
 
-map.fitBounds(routeLine.getBounds(), {
-  padding:[28,28]
-});
+map.fitBounds(routeLine.getBounds(), { padding:[28,28] });
 </script>
-
 </body>
 </html>
