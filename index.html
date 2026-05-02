@@ -1,165 +1,331 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Outbound Journey · The Grand Adventure</title>
+<title>Outbound Journey — Route 66 Adventure</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 <style>
-:root{
-  --sky:#DDECF8;
-  --sun:#FFD166;
-  --ink:#2F3A4A;
-  --muted:#6B7280;
-  --line:#D9E6F2;
-  --white:#FFFFFF;
-  --shadow:0 12px 30px rgba(0,0,0,.08);
-}
-
-body{
+body {
   margin:0;
-  font-family:"Open Sans";
-  color:var(--ink);
-  background:linear-gradient(180deg,var(--sky) 0%,#F5FAFD 50%,#FFFFFF 100%);
+  font-family:'Open Sans',sans-serif;
+  background:linear-gradient(180deg,#EAF4FB 0%,#F7E9EC 100%);
+  color:#2F3A4A;
 }
 
-.wrap{max-width:1100px;margin:auto;padding:30px;}
-
-.hero{
-  background:linear-gradient(135deg,#FFFFFF 0%,#F7FBFF 60%,var(--sun) 100%);
-  border-radius:30px;
-  padding:40px;
+/* HERO */
+.hero {
   text-align:center;
-  box-shadow:var(--shadow);
+  padding:50px 20px 30px;
 }
 
-h1{font-family:"Quicksand";font-size:52px;margin:0;}
+.hero h1 {
+  font-family:'Quicksand',sans-serif;
+  font-size:42px;
+  margin-bottom:10px;
+}
 
-.subtitle{
-  color:var(--muted);
-  margin-top:10px;
+.hero p {
   max-width:700px;
-  margin-left:auto;
-  margin-right:auto;
+  margin:auto;
+  font-size:16px;
+  line-height:1.6;
 }
 
-.day{
+/* MAP */
+#map {
+  height:400px;
+  margin:20px auto;
+  max-width:1100px;
+  border-radius:20px;
+}
+
+/* NAV */
+.nav {
+  position:sticky;
+  top:0;
   background:white;
-  border-radius:26px;
-  padding:24px;
-  margin-top:24px;
-  box-shadow:var(--shadow);
+  padding:10px;
+  overflow-x:auto;
+  white-space:nowrap;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  z-index:10;
 }
 
-.tag{
+.nav a {
   display:inline-block;
-  padding:6px 10px;
-  border-radius:999px;
-  font-size:12px;
   margin:5px;
-  background:#EEF7FC;
+  padding:8px 14px;
+  border-radius:20px;
+  text-decoration:none;
+  font-size:14px;
+  background:#f2f4f8;
+  color:#333;
 }
 
-.highlight{background:#FFF3CD;}
-.fun{background:#E8F7F0;}
+/* DAY CARDS */
+.container {
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
 
+.day {
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:25px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.06);
+}
+
+.day h2 {
+  font-family:'Quicksand',sans-serif;
+  margin-top:0;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+}
+
+.card {
+  background:#f9fafb;
+  padding:15px;
+  border-radius:16px;
+}
+
+@media(max-width:800px){
+  .grid {
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-<header class="hero">
-<h1>Outbound Journey</h1>
-<p class="subtitle">
-Goldsboro → Chicago → Route 66 → Santa Monica  
-The beginning of the adventure — where everything feels new.
-</p>
-</header>
+<div class="hero">
+  <h1>Outbound Journey</h1>
+  <p>
+    The road ahead is wide open. Twelve days of discovery, roadside surprises,
+    and the slow unfolding of Route 66. This is where the adventure begins.
+  </p>
+</div>
 
-<!-- DAY 1 -->
-<div class="day">
+<div id="map"></div>
+
+<div class="nav">
+  <a href="#d1">Day 1</a>
+  <a href="#d2">Day 2</a>
+  <a href="#d3">Day 3</a>
+  <a href="#d4">Day 4</a>
+  <a href="#d5">Day 5</a>
+  <a href="#d6">Day 6</a>
+  <a href="#d7">Day 7</a>
+  <a href="#d8">Day 8</a>
+  <a href="#d9">Day 9</a>
+  <a href="#d10">Day 10</a>
+  <a href="#d11">Day 11</a>
+  <a href="#d12">Day 12</a>
+</div>
+
+<div class="container">
+
+<!-- DAY TEMPLATE -->
+<div id="d1" class="day">
 <h2>Day 1 — Goldsboro → Lewisburg</h2>
-<p>Excitement is high. The adventure officially begins.</p>
-<span class="tag highlight">Adventure Begins</span>
+<div class="grid">
+<div class="card">
+<p>The adventure begins. A gentle start, easing into the rhythm of the road.</p>
+</div>
+<div class="card">
+<strong>What to Know</strong>
+<ul>
+<li>Easy drive day</li>
+<li>Set the tone</li>
+<li>First night excitement</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 2 -->
-<div class="day">
+<div id="d2" class="day">
 <h2>Day 2 — Lewisburg → Tipp City</h2>
-<p>Settling into the rhythm of the road.</p>
+<div class="grid">
+<div class="card">
+<p>Rolling hills give way to open farmland. The landscape begins to stretch.</p>
+</div>
+<div class="card">
+<strong>What to Know</strong>
+<ul>
+<li>Changing scenery</li>
+<li>Midwest begins</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 3 -->
-<div class="day">
-<h2>Day 3 — Tipp City → Chicago</h2>
-<p>Arriving at the start of Route 66.</p>
-<span class="tag highlight">Route 66 Begins</span>
+<div id="d3" class="day">
+<h2>Day 3 — Tipp City → Chicago Area</h2>
+<div class="grid">
+<div class="card">
+<p>The official start of Route 66 is within reach.</p>
+</div>
+<div class="card">
+<strong>What to Know</strong>
+<ul>
+<li>Big city arrival</li>
+<li>Route 66 kickoff</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 4 -->
-<div class="day">
+<div id="d4" class="day">
 <h2>Day 4 — Chicago → Springfield</h2>
-<p>First official Route 66 day.</p>
+<div class="grid">
+<div class="card">
+<p>The road becomes history. Classic diners and roadside charm begin.</p>
+</div>
+<div class="card">
+<strong>Stops</strong>
+<ul>
+<li>Lou Mitchell’s</li>
+<li>Gemini Giant</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 5 -->
-<div class="day">
+<div id="d5" class="day">
 <h2>Day 5 — Springfield → Rolla</h2>
-<p>Classic roadside Americana begins.</p>
+<div class="grid">
+<div class="card">
+<p>Bridges, neon, and the unmistakable feel of Route 66.</p>
+</div>
+<div class="card">
+<ul>
+<li>Chain of Rocks Bridge</li>
+<li>Ted Drewes</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 6 -->
-<div class="day">
+<div id="d6" class="day">
 <h2>Day 6 — Rolla → Tulsa</h2>
-<p>Quirky stops and surprises along the way.</p>
-<span class="tag fun">Blue Whale Stop</span>
+<div class="grid">
+<div class="card">
+<p>Quirky Americana comes alive.</p>
+</div>
+<div class="card">
+<ul>
+<li>Blue Whale of Catoosa</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 7 -->
-<div class="day">
+<div id="d7" class="day">
 <h2>Day 7 — Tulsa → Amarillo</h2>
-<p>Cadillac Ranch photo day.</p>
-<span class="tag highlight">Cadillac Ranch</span>
+<div class="grid">
+<div class="card">
+<p>The open road stretches wide. Big skies ahead.</p>
+</div>
+<div class="card">
+<ul>
+<li>Cadillac Ranch</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 8 -->
-<div class="day">
+<div id="d8" class="day">
 <h2>Day 8 — Amarillo → Albuquerque</h2>
-<p>Wide open skies and long desert roads.</p>
+<div class="grid">
+<div class="card">
+<p>Midpoint magic and desert transition.</p>
+</div>
+<div class="card">
+<ul>
+<li>MidPoint Café</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 9 -->
-<div class="day">
+<div id="d9" class="day">
 <h2>Day 9 — Albuquerque → Holbrook</h2>
-<p>Wigwam Motel stay — a family favorite.</p>
-<span class="tag highlight">Wigwam Motel</span>
+<div class="grid">
+<div class="card">
+<p>The landscape shifts again. History and culture deepen.</p>
+</div>
+<div class="card">
+<ul>
+<li>Winslow</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 10 -->
-<div class="day">
+<div id="d10" class="day">
 <h2>Day 10 — Holbrook → Williams</h2>
-<p>Grand Canyon day.</p>
-<span class="tag highlight">Grand Canyon</span>
+<div class="grid">
+<div class="card">
+<p>A special stop. The Wigwam Motel and a slower pace.</p>
+</div>
+<div class="card">
+<ul>
+<li>Wigwam Motel</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 11 -->
-<div class="day">
+<div id="d11" class="day">
 <h2>Day 11 — Williams → Needles</h2>
-<p>Desert landscapes and changing scenery.</p>
+<div class="grid">
+<div class="card">
+<p>The desert welcomes you.</p>
+</div>
+<div class="card">
+<ul>
+<li>Roy’s Motel Sign</li>
+</ul>
+</div>
+</div>
 </div>
 
-<!-- DAY 12 -->
-<div class="day">
+<div id="d12" class="day">
 <h2>Day 12 — Needles → Buena Park</h2>
-<p>The finish line on the Pacific Coast.</p>
-<span class="tag highlight">We Made It 🌊</span>
+<div class="grid">
+<div class="card">
+<p>The journey west reaches its end at the Pacific.</p>
+</div>
+<div class="card">
+<ul>
+<li>Santa Monica Pier</li>
+</ul>
+</div>
+</div>
 </div>
 
 </div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+var map = L.map('map').setView([39.5,-98.35],4);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution:'© OpenStreetMap'
+}).addTo(map);
+</script>
+
 </body>
 </html>
